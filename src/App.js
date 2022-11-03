@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from 'react-router-dom';
+import StarWarsForm from './components/StarWarsForm';
+import Results from './components/Results';
+import Error from './components/Error';
+import Home from './components/Home';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <header className="App-header">
+                <StarWarsForm />
+                <br />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/results/:apiName/:id' element={<Results />} />
+                    <Route path='/*' element={<Error />} />
+                </Routes>
+            </header>
+        </div>
+    );
 }
 
 export default App;
